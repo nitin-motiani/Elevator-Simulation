@@ -1,10 +1,16 @@
-                        CS 3400
-            Principles of Software Engineering
-                    Elevator Simulation
+*****************************************
+*CS 3400				*
+*Principles of Software Engineering	*
+*					*
+*Elevator Simulation			*
+*					*
+*Author : Nitin Motiani			*
+*Roll No. : CS09B016			*
+*****************************************
 
-            Author : Nitin Motiani
-            Roll No. : CS09B016
 
+Requirements : 
+	Java needs to be installed to execute the code.
 
 Execution : 
         1. go to bin folder.
