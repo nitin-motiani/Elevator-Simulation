@@ -2,7 +2,7 @@ import java.util.*;
 
 
 /**
- * @author nitin
+ * @author nitin 
  *
  */
 class Simulation
