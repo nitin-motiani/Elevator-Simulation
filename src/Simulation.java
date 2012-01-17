@@ -158,6 +158,7 @@ class Simulation
 		int maxLimit = this.numberOfFloors*5;
 		int maxWaitingTime = generator.nextInt(maxLimit - minLimit + 1) + minLimit;
 
+		
 		person.setSourceFloorNo(sourceFloorNo);
 		person.setDestinationFloorNo(destinationFloorNo);
 		person.setMaxWaitingTime(maxWaitingTime);
@@ -176,10 +177,12 @@ class Simulation
 	
 	public void simulate()
 	{
+		int personNo = 1;
 		initialize();
 
 		for (int time = 0; time < totalTime;)
 		{
+			
 			Event eventToExecute = eventsQueue.removeFirst();	//event queue will never be empty
 			
 			/*
@@ -189,6 +192,12 @@ class Simulation
 			 */
 			if (!(eventToExecute instanceof ElevatorsChangeState))
 			{
+				if (eventToExecute instanceof PersonArrives)
+				{
+					((PersonArrives) eventToExecute).getPerson().setPersonNo(personNo);
+					personNo++;
+				}
+				
 				eventToExecute.happen();
 				Event event = generatePerson();
 				if (event != null)
@@ -209,8 +218,10 @@ class Simulation
 			 */
 			else
 			{
-				eventToExecute.happen();
 				time++;
+				System.out.println();
+				System.out.println("Time : " + (time ));
+				eventToExecute.happen();
 				
 				Event elevatorNextChange = new ElevatorsChangeState(elevatorList, floorList, statistics, numberOfFloors, numberOfElevators);
 				eventsQueue.addFirst(elevatorNextChange);
@@ -226,6 +237,8 @@ class Simulation
 		}
 		
 		//print final statistics
+		System.out.println();
+		System.out.println("Final statistics : ");
 		statistics.printStatistics();
 		
 	}
@@ -235,14 +248,18 @@ class Simulation
 	 */
 	public static void main (String [] args)
 	{
-		if (args.length != 3)
-		{
-			System.out.println("The format is Simulation <number of floors> <number of elevators> <time for simulation>");
-			return;
-		}
-		int floors = Integer.parseInt(args[0]);
-		int elevators = Integer.parseInt(args[1]);
-		int timeForSimulation = Integer.parseInt(args[2]);
+		
+		Scanner scanner = new Scanner(System.in);
+		
+		System.out.println("Enter number of floors.");
+		int floors = scanner.nextInt();
+		
+		System.out.println("Enter number of elevators.");
+		int elevators = scanner.nextInt();
+		
+		System.out.println("Enter time for simulation.");
+		int timeForSimulation = scanner.nextInt();
+		
 		Simulation simulation = new Simulation(floors,elevators,timeForSimulation);
 		simulation.simulate();
 	}

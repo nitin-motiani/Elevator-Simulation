@@ -13,6 +13,7 @@ class ElevatorsChangeState extends Event
 	private List<Floor> floorList;
 	private Statistics statistics;
 	private int numberOfFloors;
+	@SuppressWarnings("unused")
 	private int numberOfElevators;
 	
 
@@ -63,7 +64,8 @@ class ElevatorsChangeState extends Event
 		{
 			elevator.addPassengerToList(person);
 			statistics.setTotalWaitingTime(statistics.getTotalWaitingTime() + person.getTimePastInWaiting());
-			System.out.println("Person at floor " + person.getSourceFloorNo() + " entered elevator number " 
+			System.out.println("Person No. " + person.getPersonNo() + " at floor " 
+					+ person.getSourceFloorNo() + " entered elevator number " 
 					+ elevator.getElevatorNumber());
 		}
 		elevator.setElevatorState(resultingElevatorState);
@@ -73,7 +75,7 @@ class ElevatorsChangeState extends Event
 	 * @param elevator
 	 * @param floor
 	 * 
-	 * @brief : The passengers whose destination is floor, 
+	 * @brief : The passengers, whose destination is floor, 
 	 * 			will exit from the elevator.
 	 */
 	private void unloadElevator(Elevator elevator,Floor floor)

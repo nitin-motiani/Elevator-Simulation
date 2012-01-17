@@ -46,7 +46,7 @@ class PersonsGiveUpAndLeave extends Event
 				else
 				{
 					statistics.setNoOfPersonsGaveUp(statistics.getNoOfPersonsGaveUp() + 1);		
-					System.out.println("Person at floor No. " + floor.getFloorNo() + " gives up and leaves.");
+					System.out.println("Person No. " + person.getPersonNo() + " at floor No. " + floor.getFloorNo() + " gives up and leaves.");
 				}
 
 			}
@@ -60,7 +60,7 @@ class PersonsGiveUpAndLeave extends Event
 				else
 				{
 					statistics.setNoOfPersonsGaveUp(statistics.getNoOfPersonsGaveUp() + 1);
-					System.out.println("Person at floor No. " + floor.getFloorNo() + " gives up and leaves.");
+					System.out.println("Person No. " + person.getPersonNo() + " at floor No. " + floor.getFloorNo() + " gives up and leaves.");
 				}
 
 			}

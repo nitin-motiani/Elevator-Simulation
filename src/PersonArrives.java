@@ -47,7 +47,8 @@ class PersonArrives extends Event
 	void happen()
 	{
 		floor.addPersonToList(person);
-		System.out.println("Person created at floor No. : " + floor.getFloorNo());
+		System.out.println("Person No. " + person.getPersonNo() + 
+				" arrives at floor No. : " + floor.getFloorNo());
 	}
 	
 }
